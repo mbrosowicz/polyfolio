@@ -86,7 +86,10 @@ export function generateSmootherTerrain(options: SmoothTerrainOptions = {}): THR
     }
 
     noiseValue /= maxValue;
-    const elevation = minElevation + noiseValue * (maxElevation - minElevation);
+    const elevation = Math.min(
+      maxElevation,
+      Math.max(minElevation, minElevation + noiseValue * (maxElevation - minElevation))
+    );
     positions[i + 1] = elevation;
   }
 

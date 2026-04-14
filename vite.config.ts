@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react';
 import glsl from 'vite-plugin-glsl';
 import path from 'path';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/polyfolio/' : '/',
   plugins: [react(), glsl()],
   resolve: {
     alias: {
@@ -22,7 +23,6 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    minify: 'terser',
     sourcemap: false,
     rollupOptions: {
       output: {
@@ -36,4 +36,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['three', '@react-three/fiber', '@react-three/drei'],
   },
-});
+}));

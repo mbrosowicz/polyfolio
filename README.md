@@ -55,21 +55,14 @@
 git clone https://github.com/mbrosowicz/polyfolio.git
 cd polyfolio
 
-# 2. Execute setup automático (recomendado)
-# Windows:
-setup.bat
-
-# macOS/Linux:
-chmod +x setup.sh && ./setup.sh
-
-# Ou manualmente:
-npm install
-npm run prepare          # Configura Husky
-npm run type-check       # Valida tipos
-npm run lint             # Executa ESLint
+# 2. Instale dependências
+pnpm install
+pnpm run prepare          # Configura Husky
+pnpm run type-check       # Valida tipos
+pnpm run lint             # Executa ESLint
 
 # 3. Inicie o servidor
-npm run dev
+pnpm run dev
 ```
 
 Abrirá em: **http://localhost:5173** com hot reload automático
@@ -78,21 +71,20 @@ Abrirá em: **http://localhost:5173** com hot reload automático
 
 ### Para Iniciantes
 
-1. **[QUICK_START.md](QUICK_START.md)** - Exemplos práticos (5 min)
-2. **[SETUP.md](SETUP.md)** - Guia passo-a-passo de instalação
-3. **[DOCS_INDEX.md](DOCS_INDEX.md)** - Índice de navegação
+1. **[Quick Start](docs/QUICK_START.md)** - Exemplos práticos (5 min)
+2. **[Setup](docs/SETUP.md)** - Guia passo-a-passo de instalação
 
 ### Para Desenvolvedores
 
-- **[TESTING.md](TESTING.md)** ⭐ **NEW** - Estrutura de testes e como escrever testes
-- **[TYPESCRIPT_SETUP.md](TYPESCRIPT_SETUP.md)** - TypeScript, ESLint, Prettier
-- **[COMPONENT_TEMPLATE.md](COMPONENT_TEMPLATE.md)** - Template para novos componentes
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Diretrizes de contribuição
+- **[Testing](docs/TESTING.md)** - Estrutura de testes e como escrever testes
+- **[TypeScript Setup](docs/TYPESCRIPT_SETUP.md)** - TypeScript, ESLint, Prettier
+- **[Component Template](docs/COMPONENT_TEMPLATE.md)** - Template para novos componentes
+- **[Contributing](CONTRIBUTING.md)** - Diretrizes de contribuição
 
 ### Para 3D Artists
 
-- **[PS1_SHADERS_README.md](PS1_SHADERS_README.md)** - Customização de shaders
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Problemas comuns e soluções
+- **[PS1 Shaders](docs/PS1_SHADERS_README.md)** - Customização de shaders
+- **[Troubleshooting](docs/TROUBLESHOOTING.md)** - Problemas comuns e soluções
 
 ## 📁 Arquitetura do Projeto
 
@@ -327,24 +319,18 @@ const geometry = generateProceduralTerrain({
 
 ## 🚢 Deploy
 
-### Vercel (Recomendado)
+O projeto está configurado para deploy automático via **GitHub Pages**.
+
+Cada push na branch `main` aciona o workflow CI/CD que:
+
+1. Executa type-check, lint, testes
+2. Gera o build de produção
+3. Faz deploy em **https://mbrosowicz.github.io/polyfolio/**
+
+### Manual
 
 ```bash
-# Conecte seu GitHub
-# Vercel detecta automaticamente Vite e faz o deploy
-```
-
-### Netlify
-
-```bash
-npm run build
-# Deploy a pasta 'dist'
-```
-
-### Self-hosted
-
-```bash
-npm run build
+pnpm run build
 # Serve a pasta 'dist' com qualquer servidor HTTP
 ```
 
@@ -378,10 +364,9 @@ MIT License - veja [LICENSE](LICENSE) para detalhes
 
 ### Precisa de ajuda?
 
-- **Documentação**: [DOCS_INDEX.md](DOCS_INDEX.md)
 - **Issues**: [GitHub Issues](https://github.com/mbrosowicz/polyfolio/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/mbrosowicz/polyfolio/discussions)
-- **Troubleshooting**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **Troubleshooting**: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 
 ---
 

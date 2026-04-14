@@ -67,7 +67,9 @@ export class PosterizationPass {
   private scene: THREE.Scene;
   private camera: THREE.Camera;
   private renderer: THREE.WebGLRenderer;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public composer: any = null; // EffectComposer from jsm
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public posterPass: any = null; // ShaderPass from jsm
 
   constructor(scene: THREE.Scene, camera: THREE.Camera, renderer: THREE.WebGLRenderer) {
@@ -79,15 +81,18 @@ export class PosterizationPass {
   /**
    * Inicializa o EffectComposer
    */
-  public initialize(options: PosterizationOptions = {}): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public async initialize(options: PosterizationOptions = {}): Promise<any> {
     const { levels = 8, dithering = false, ditherStrength = 0.5 } = options;
 
-    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
-    const { EffectComposer } = require('three/examples/jsm/postprocessing/EffectComposer');
-    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
-    const { RenderPass } = require('three/examples/jsm/postprocessing/RenderPass');
-    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
-    const { ShaderPass } = require('three/examples/jsm/postprocessing/ShaderPass');
+    /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+    // @ts-expect-error -- three.js JSM postprocessing types not available in this distribution
+    const { EffectComposer } = await import('three/examples/jsm/postprocessing/EffectComposer');
+    // @ts-expect-error -- three.js JSM postprocessing types not available in this distribution
+    const { RenderPass } = await import('three/examples/jsm/postprocessing/RenderPass');
+    // @ts-expect-error -- three.js JSM postprocessing types not available in this distribution
+    const { ShaderPass } = await import('three/examples/jsm/postprocessing/ShaderPass');
+    /* eslint-enable @typescript-eslint/no-unsafe-assignment */
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     this.composer = new EffectComposer(this.renderer);
@@ -128,6 +133,7 @@ export class PosterizationPass {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     this.composer.addPass(this.posterPass);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.composer;
   }
 

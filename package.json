@@ -4,6 +4,7 @@
   "description": "Portfolio com efeitos de PS1 usando React Three Fiber e TypeScript",
   "type": "module",
   "private": true,
+  "homepage": "https://mbrosowicz.github.io/polyfolio/",
   "license": "MIT",
   "author": "Your Name",
   "keywords": [

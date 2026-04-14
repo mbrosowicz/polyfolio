@@ -21,22 +21,29 @@ const PostProcessing: React.FC<{
   useEffect(() => {
     if (!enabled) return;
 
-    try {
-      const pass = new PosterizationPass(scene, camera, gl);
-      pass.initialize({
-        levels,
-        dithering,
-        ditherStrength: 0.5,
-      });
+    let passInstance: PosterizationPass | null = null;
 
-      posterPassRef.current = pass;
+    const init = async () => {
+      try {
+        const pass = new PosterizationPass(scene, camera, gl);
+        await pass.initialize({
+          levels,
+          dithering,
+          ditherStrength: 0.5,
+        });
 
-      return () => {
-        pass.dispose();
-      };
-    } catch (error) {
-      console.error('Erro ao inicializar PosterizationPass:', error);
-    }
+        passInstance = pass;
+        posterPassRef.current = pass;
+      } catch (error) {
+        console.error('Erro ao inicializar PosterizationPass:', error);
+      }
+    };
+
+    void init();
+
+    return () => {
+      passInstance?.dispose();
+    };
   }, [enabled, levels, dithering, gl, scene, camera]);
 
   useEffect(() => {

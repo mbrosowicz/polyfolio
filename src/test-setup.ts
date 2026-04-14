@@ -41,5 +41,5 @@ const mockWebGLContext = {
   deleteProgram: vi.fn(),
 };
 
-/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
 HTMLCanvasElement.prototype.getContext = vi.fn(() => mockWebGLContext) as any;
