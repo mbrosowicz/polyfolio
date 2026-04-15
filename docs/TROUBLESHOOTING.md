@@ -32,10 +32,10 @@ varying vec3 vNormal;
 
 ```bash
 # Vite
-npm install --save-dev vite-plugin-glsl
+pnpm add -D vite-plugin-glsl
 
 # Webpack
-npm install --save-dev raw-loader
+pnpm add -D raw-loader
 ```
 
 ---
@@ -82,7 +82,7 @@ geometry.computeVertexNormals();
 1. Certifique-se que está instalado:
 
 ```bash
-npm install three
+pnpm add three
 # three/examples/jsm/postprocessing já vem incluído
 ```
 

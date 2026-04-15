@@ -45,8 +45,8 @@ polyfolio/
 ### 1. Instale dependências
 
 ```bash
-npm install three @react-three/fiber @react-three/drei
-npm install --save-dev vite-plugin-glsl
+pnpm add three @react-three/fiber @react-three/drei
+pnpm add -D vite-plugin-glsl
 ```
 
 ### 2. Use no seu App.jsx
@@ -154,7 +154,7 @@ Você agora tem um terreno PS1 interativo com:
 ## 💻 Requisitos Técnicos
 
 - **Node.js:** ≥ 16.0.0
-- **npm:** ≥ 8.0.0
+- **pnpm:** ≥ 9.0.0
 - **React:** ≥ 18.0.0
 - **Three.js:** r128 ou superior
 - **Navegador:** WebGL 1.0+ (qualquer navegador moderno)
@@ -226,13 +226,13 @@ const terrain = generateColoredProceduralTerrain({
 
 ```bash
 # Rodar testes
-npm test
+pnpm test
 
 # UI com Vitest
-npm run test:ui
+pnpm run test:ui
 
 # Type checking TypeScript
-npm run type-check
+pnpm run type-check
 ```
 
 ---
@@ -242,14 +242,14 @@ npm run type-check
 ### Vite (Recomendado)
 
 ```bash
-npm run build
-npm run preview
+pnpm run build
+pnpm run preview
 ```
 
 ### Webpack
 
 ```bash
-npm run build -- --mode production
+pnpm run build -- --mode production
 ```
 
 ---

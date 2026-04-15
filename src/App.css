@@ -8,12 +8,10 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Courier New', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000;
+  background: #050607;
 }
 
 #root {
@@ -21,7 +19,53 @@ body {
   height: 100%;
 }
 
-.app {
+.appShell {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  height: 56px;
+  border-bottom: 1px solid #293037;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: linear-gradient(180deg, #11151a 0%, #0b0e12 100%);
+}
+
+.topBar h1 {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9beac3;
+}
+
+.viewSwitch {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.viewSwitch button {
+  border: 1px solid #38424d;
+  background: #141a21;
+  color: #d2dae2;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.viewSwitch button.active {
+  border-color: #70f6bc;
+  background: #1a2b28;
+  color: #bafad8;
+}
+
+.appStage {
+  width: 100%;
+  height: calc(100% - 56px);
 }

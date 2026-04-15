@@ -268,16 +268,16 @@ Antes de fazer commit:
 
 ```bash
 # Run all tests
-npm run test
+pnpm run test
 
 # Watch mode
-npm run test -- --watch
+pnpm run test -- --watch
 
 # This specific test file
-npm run test MyNewComponent
+pnpm run test MyNewComponent
 
 # With UI
-npm run test:ui
+pnpm run test:ui
 ```
 
 ---

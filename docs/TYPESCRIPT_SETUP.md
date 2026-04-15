@@ -46,19 +46,19 @@ Este projeto está totalmente configurado com:
 
 ```bash
 # 1. Instale as dependências
-npm install
+pnpm install
 
-# 2. Husky será configurado automaticamente no npm install
+# 2. Husky será configurado automaticamente no pnpm install
 # Se não, execute:
-npm run prepare
+pnpm run prepare
 
 # 3. Verifique se tudo está funcionando
-npm run type-check
-npm run lint
-npm run test
+pnpm run type-check
+pnpm run lint
+pnpm run test
 
 # 4. Comece o desenvolvimento
-npm run dev
+pnpm run dev
 ```
 
 ## 📝 Adicionando TypeScript a um Componente Existente
@@ -89,22 +89,22 @@ Antes de fazer commit:
 
 ```bash
 # Type checking
-npm run type-check
+pnpm run type-check
 
 # Linting
-npm run lint
+pnpm run lint
 
 # Format code
-npm run format
+pnpm run format
 
 # Run tests
-npm run test
+pnpm run test
 ```
 
 Ou execute todos de uma vez:
 
 ```bash
-npm run lint && npm run type-check && npm run test
+pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
 ## 🔒 Regras ESLint Importantes
@@ -173,8 +173,8 @@ Aliases disponíveis:
 ### ESLint não funciona
 
 ```bash
-npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser
-npm run lint -- --fix
+pnpm add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
+pnpm run lint -- --fix
 ```
 
 ### Prettier e ESLint conflitam
@@ -185,7 +185,7 @@ Já está resolvido na configuração! ESLint tem `prettier` como estendido.
 
 ```bash
 # Reinicialize husky
-npm run prepare
+pnpm run prepare
 
 # Verifique permissões
 ls -la .husky/

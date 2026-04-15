@@ -14,14 +14,29 @@ const PostProcessing: React.FC<{
   enabled: boolean;
   levels: number;
   dithering: boolean;
-}> = ({ enabled, levels, dithering }: { enabled: boolean; levels: number; dithering: boolean }) => {
-  const { gl, scene, camera } = useThree();
+  ditherStrength: number;
+}> = ({
+  enabled,
+  levels,
+  dithering,
+  ditherStrength,
+}: {
+  enabled: boolean;
+  levels: number;
+  dithering: boolean;
+  ditherStrength: number;
+}) => {
+  const { gl, scene, camera, size } = useThree();
   const posterPassRef = useRef<PosterizationPass | null>(null);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      posterPassRef.current?.dispose();
+      posterPassRef.current = null;
+      return;
+    }
 
-    let passInstance: PosterizationPass | null = null;
+    let disposed = false;
 
     const init = async () => {
       try {
@@ -29,10 +44,17 @@ const PostProcessing: React.FC<{
         await pass.initialize({
           levels,
           dithering,
-          ditherStrength: 0.5,
+          ditherStrength,
         });
 
-        passInstance = pass;
+        pass.setSize(size.width, size.height);
+
+        if (disposed) {
+          pass.dispose();
+          return;
+        }
+
+        posterPassRef.current?.dispose();
         posterPassRef.current = pass;
       } catch (error) {
         console.error('Erro ao inicializar PosterizationPass:', error);
@@ -42,9 +64,11 @@ const PostProcessing: React.FC<{
     void init();
 
     return () => {
-      passInstance?.dispose();
+      disposed = true;
+      posterPassRef.current?.dispose();
+      posterPassRef.current = null;
     };
-  }, [enabled, levels, dithering, gl, scene, camera]);
+  }, [enabled, levels, dithering, ditherStrength, gl, scene, camera, size.width, size.height]);
 
   useEffect(() => {
     if (posterPassRef.current) {
@@ -56,7 +80,7 @@ const PostProcessing: React.FC<{
     if (posterPassRef.current && enabled) {
       posterPassRef.current.render();
     }
-  });
+  }, 1);
 
   return null;
 };
@@ -72,9 +96,9 @@ const PS1TerrainScene: React.FC<PS1TerrainCanvasProps> = ({
   posterizationEnabled = true,
   posterizationLevels = 8,
   dithering = false,
+  ditherStrength = 0.5,
   smoothTerrain = true,
 }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
   const geometryRef = useRef<THREE.BufferGeometry | null>(null);
 
   const geometry = useMemo(() => {
@@ -102,11 +126,6 @@ const PS1TerrainScene: React.FC<PS1TerrainCanvasProps> = ({
     return gen;
   }, [terrainWidth, terrainHeight, smoothTerrain]);
 
-  useFrame(({ camera }: { camera: THREE.Camera }) => {
-    camera.position.set(80, 60, 80);
-    camera.lookAt(0, 15, 0);
-  });
-
   if (!geometryRef.current) return null;
 
   return (
@@ -116,19 +135,23 @@ const PS1TerrainScene: React.FC<PS1TerrainCanvasProps> = ({
           enabled={posterizationEnabled}
           levels={posterizationLevels}
           dithering={dithering}
+          ditherStrength={ditherStrength}
         />
       )}
 
-      <PS1Material
-        ref={meshRef}
-        geometry={geometry}
-        color="#00ff00"
-        gridSize={gridSize}
-        wobbleStrength={wobbleStrength}
-        lightDir={[1, 1, 0.5]}
-      />
+      {/* PlaneGeometry nasce no plano XY; rotacionamos para o plano XZ */}
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <PS1Material
+          geometry={geometry}
+          color="#00ff00"
+          gridSize={gridSize}
+          wobbleStrength={wobbleStrength}
+          lightDir={[1, 1, 0.5]}
+        />
+      </group>
 
-      <OrbitControls />
+      <OrbitControls makeDefault enableDamping dampingFactor={0.06} />
     </>
   );
 };

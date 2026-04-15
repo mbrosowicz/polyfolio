@@ -23,7 +23,7 @@ seu-projeto/
 ### 2. Instale as dependências
 
 ```bash
-npm install three @react-three/fiber @react-three/drei
+pnpm add three @react-three/fiber @react-three/drei
 ```
 
 ### 3. Use no seu App.jsx
@@ -68,7 +68,7 @@ export default App;
 Se você estiver usando **Create React App** (está pronto), você precisa ejetar:
 
 ```bash
-npm run eject
+pnpm run eject
 ```
 
 Se usar **Vite**, configure em `vite.config.js`:
@@ -86,7 +86,7 @@ export default defineConfig({
 Instale o plugin:
 
 ```bash
-npm install --save-dev vite-plugin-glsl
+pnpm add -D vite-plugin-glsl
 ```
 
 Se usar **Webpack** manualmente, adicione ao `webpack.config.js`:
@@ -105,7 +105,7 @@ module: {
 Instale:
 
 ```bash
-npm install --save-dev raw-loader
+pnpm add -D raw-loader
 ```
 
 ---

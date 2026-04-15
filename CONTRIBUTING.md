@@ -36,9 +36,9 @@ const processData = (data: DataItem[]): number[] => {
 
 ```bash
 # Before committing
-npm run lint:fix
-npm run format
-npm run type-check
+pnpm run lint:fix
+pnpm run format
+pnpm run type-check
 ```
 
 ### Commit Messages
@@ -58,10 +58,10 @@ chore: update dependencies
 1. Update the README.md if applicable
 2. Run all checks:
    ```bash
-   npm run type-check
-   npm run lint
-   npm run test
-   npm run build
+   pnpm run type-check
+   pnpm run lint
+   pnpm run test
+   pnpm run build
    ```
 3. Fill out the PR template
 4. Link related issues
@@ -74,7 +74,7 @@ chore: update dependencies
 - Aim for >80% coverage
 
 ```bash
-npm run test:coverage
+pnpm run test:coverage
 ```
 
 ## 📚 Documentation
@@ -175,11 +175,11 @@ Maintainers only:
 
 ```bash
 # Update version
-npm version patch|minor|major
+pnpm version patch|minor|major
 
 # Build & publish
-npm run build
-npm publish
+pnpm run build
+pnpm publish
 
 # Git push with tags
 git push --follow-tags

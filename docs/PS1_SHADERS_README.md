@@ -33,7 +33,7 @@ Implementação completa de shaders e componentes React Three Fiber para simular
 ### 1. Instalação de Dependências
 
 ```bash
-npm install three @react-three/fiber @react-three/drei
+pnpm add three @react-three/fiber @react-three/drei
 ```
 
 ### 2. Usar o Demo Completo

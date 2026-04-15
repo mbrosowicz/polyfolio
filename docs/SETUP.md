@@ -17,7 +17,7 @@ Portfolio web com efeitos de PlayStation 1 usando React Three Fiber, TypeScript 
 ### Requisitos
 
 - Node.js >= 18.0.0
-- npm >= 9.0.0
+- pnpm >= 9.0.0
 
 ### Instalação
 
@@ -27,10 +27,10 @@ git clone <seu-repo>
 cd polyfolio
 
 # Instale as dependências
-npm install
+pnpm install
 
 # Inicie o servidor de desenvolvimento
-npm run dev
+pnpm run dev
 ```
 
 O projeto abrirá automaticamente em `http://localhost:5173`
@@ -39,26 +39,26 @@ O projeto abrirá automaticamente em `http://localhost:5173`
 
 ```bash
 # Desenvolvimento
-npm run dev           # Inicia servidor Vite com hot reload
+pnpm run dev           # Inicia servidor Vite com hot reload
 
 # Build
-npm run build         # Build para produção (type-check + vite build)
-npm run preview       # Preview do build em desenvolvimento
+pnpm run build         # Build para produção (type-check + vite build)
+pnpm run preview       # Preview do build em desenvolvimento
 
 # Qualidade de Código
-npm run type-check    # Verifica tipos TypeScript
-npm run lint          # Executar ESLint
-npm run lint:fix      # Fix automático do ESLint
-npm run format        # Format com Prettier
-npm run format:check  # Check format sem modificar
+pnpm run type-check    # Verifica tipos TypeScript
+pnpm run lint          # Executar ESLint
+pnpm run lint:fix      # Fix automático do ESLint
+pnpm run format        # Format com Prettier
+pnpm run format:check  # Check format sem modificar
 
 # Testes
-npm run test          # Rodar testes (Vitest)
-npm run test:ui       # UI interativa dos testes
-npm run test:coverage # Gerar relatório de cobertura
+pnpm run test          # Rodar testes (Vitest)
+pnpm run test:ui       # UI interativa dos testes
+pnpm run test:coverage # Gerar relatório de cobertura
 
 # Git Hooks (automático)
-npm run prepare       # Instalar Husky hooks
+pnpm run prepare       # Instalar Husky hooks
 ```
 
 ## 📁 Estrutura do Projeto
@@ -71,6 +71,11 @@ polyfolio/
 │   │   ├── PS1TerrainCanvas.tsx
 │   │   ├── PS1Demo.tsx      # Demo interativa
 │   │   └── PS1Demo.module.css
+│   │   └── world/            # Mapa 3D interativo (reutilizável)
+│   │       ├── InteractivePortfolioMap.tsx
+│   │       ├── RetroProjectMarker.tsx
+│   │       ├── RetroPlayerIcon.tsx
+│   │       └── projectNodes.ts
 │   ├── shaders/             # Shaders GLSL
 │   │   ├── ps1VertexJitter.glsl
 │   │   └── ps1Fragment.glsl
@@ -111,7 +116,7 @@ function App() {
 
 ### Canvas Customizado
 
-```tsx
+````tsx
 import PS1TerrainCanvas from '@components/PS1TerrainCanvas';
 
 <PS1TerrainCanvas
@@ -121,7 +126,18 @@ import PS1TerrainCanvas from '@components/PS1TerrainCanvas';
   posterizationLevels={8}
   smoothTerrain={true}
 />;
-```
+
+### Mapa Interativo de Projetos
+
+```tsx
+import InteractivePortfolioMap from '@components/world/InteractivePortfolioMap';
+
+function App() {
+  return <InteractivePortfolioMap />;
+}
+````
+
+````
 
 ### Material Com Geometria Customizada
 
@@ -139,7 +155,7 @@ const geometry = generateProceduralTerrain({
 <Canvas>
   <PS1Material geometry={geometry} color="#ff6600" gridSize={8} wobbleStrength={0.5} />
 </Canvas>;
-```
+````
 
 ## ⚙️ Configuração de Desenvolvimento
 
@@ -195,16 +211,16 @@ VITE_DEBUG=true
 
 ```bash
 # Rodar todos os testes
-npm run test
+pnpm run test
 
 # Modo watch
-npm run test -- --watch
+pnpm run test -- --watch
 
 # UI interativa
-npm run test:ui
+pnpm run test:ui
 
 # Cobertura
-npm run test:coverage
+pnpm run test:coverage
 ```
 
 ## 🔧 Troubleshooting
@@ -212,7 +228,7 @@ npm run test:coverage
 ### Erro: "Cannot find module vite-plugin-glsl"
 
 ```bash
-npm install --save-dev vite-plugin-glsl
+pnpm add -D vite-plugin-glsl
 ```
 
 ### Shader não renderiza
@@ -224,7 +240,7 @@ npm install --save-dev vite-plugin-glsl
 ### Build fails com "Cannot find type"
 
 ```bash
-npm run type-check
+pnpm run type-check
 ```
 
 ## 📚 Documentação Adicional
@@ -245,7 +261,7 @@ npm run type-check
 ### Netlify
 
 ```bash
-npm run build
+pnpm run build
 # Deploy da pasta 'dist'
 ```
 

@@ -20,6 +20,12 @@
 - **Posterization Post-Processing** - Redução de paleta com até 256 cores
 - **Dithering Effect** - Suavização com matriz Bayer de 4x4
 
+### 🗺️ Interactive 3D Portfolio (WIP)
+
+- **Project Map View** - Cena 3D navegável para selecionar projetos
+- **Retro Markers** - Ícones low-poly temáticos por projeto
+- **Player Token** - Avatar estilo peça retrô para orientação visual
+
 ### 🔧 Developer Experience
 
 - **Type-Safe** - 100% TypeScript em strict mode, zero `any` types
@@ -46,7 +52,7 @@
 ### Pré-requisitos
 
 - **Node.js** >= 18.0.0
-- **npm** >= 9.0.0
+- **pnpm** >= 9.0.0
 
 ### Instalação (60 segundos)
 
@@ -96,6 +102,13 @@ polyfolio/
 │   │   ├── PS1TerrainCanvas.tsx  # Canvas com terreno
 │   │   ├── PS1Demo.tsx           # Demo interativa
 │   │   └── PS1Demo.module.css
+│   │
+│   │   └── world/                # Reusable interactive map components
+│   │       ├── InteractivePortfolioMap.tsx
+│   │       ├── RetroProjectMarker.tsx
+│   │       ├── RetroPlayerIcon.tsx
+│   │       ├── projectNodes.ts
+│   │       └── projectNodes.test.ts
 │   │
 │   ├── utils/                    # Utilities & logic
 │   │   ├── terrainGenerator.ts   # Geração procedural
@@ -153,34 +166,34 @@ polyfolio/
 ### Desenvolvimento
 
 ```bash
-npm run dev              # ▶️  Vite dev server (http://localhost:5173)
-npm run build            # 🏗️  Build para produção
-npm run preview          # 👁️  Preview da build
+pnpm run dev              # ▶️  Vite dev server (http://localhost:5173)
+pnpm run build            # 🏗️  Build para produção
+pnpm run preview          # 👁️  Preview da build
 ```
 
 ### Code Quality
 
 ```bash
-npm run type-check       # ✅ TypeScript strict checking
-npm run lint             # 🔍 ESLint checking
-npm run lint:fix         # 🔧 ESLint auto-fix
-npm run format           # ✨ Prettier format
-npm run format:check     # ✨ Prettier check (sem modificar)
+pnpm run type-check       # ✅ TypeScript strict checking
+pnpm run lint             # 🔍 ESLint checking
+pnpm run lint:fix         # 🔧 ESLint auto-fix
+pnpm run format           # ✨ Prettier format
+pnpm run format:check     # ✨ Prettier check (sem modificar)
 ```
 
 ### Testing ⭐ NEW
 
 ```bash
-npm run test             # 🧪 Rodar testes (watch mode)
-npm run test:ui          # 🎨 Vitest UI (http://localhost:51204)
-npm run test:coverage    # 📊 Coverage report (veja coverage/index.html)
+pnpm run test             # 🧪 Rodar testes (watch mode)
+pnpm run test:ui          # 🎨 Vitest UI (http://localhost:51204)
+pnpm run test:coverage    # 📊 Coverage report (veja coverage/index.html)
 ```
 
 ### Git & Husky
 
 ```bash
-npm run prepare          # 🔐 Setup Husky hooks
-npm run lint-staged      # 📋 Lint staged files (roda automaticamente)
+pnpm run prepare          # 🔐 Setup Husky hooks
+pnpm run lint-staged      # 📋 Lint staged files (roda automaticamente)
 ```
 
 ## ⚙️ Configuração Técnica
@@ -256,20 +269,31 @@ npm run lint-staged      # 📋 Lint staged files (roda automaticamente)
 ## 💻 Requisitos
 
 - **Node.js**: >= 18.0.0
-- **npm**: >= 9.0.0
+- **pnpm**: >= 9.0.0
 - **Navegador**: WebGL 1.0+ (Chrome, Firefox, Safari, Edge)
 
 ## 🎮 Como Usar
 
 ### Demo Completa
 
-```tsx
+````tsx
 import PS1Demo from '@components/PS1Demo';
 
 function App() {
   return <PS1Demo />;
 }
-```
+
+### Mapa de Projetos 3D
+
+```tsx
+import InteractivePortfolioMap from '@components/world/InteractivePortfolioMap';
+
+function App() {
+  return <InteractivePortfolioMap />;
+}
+````
+
+````
 
 ### Canvas Customizado
 
@@ -283,7 +307,7 @@ import PS1TerrainCanvas from '@components/PS1TerrainCanvas';
   posterizationLevels={8}
   smoothTerrain={true}
 />;
-```
+````
 
 ### Material com Geometria Customizada
 

@@ -7,6 +7,9 @@ Guia completo para testes no projeto Polyfolio.
 ```
 src/
 ├── setup.test.ts                    # Setup global para todos os testes
+├── components/
+│   └── world/
+│       └── projectNodes.test.ts     # Testes da configuração do mapa interativo
 ├── utils/
 │   ├── env.test.ts                 # Testes de variáveis de ambiente
 │   ├── terrainGenerator.test.ts     # Testes de geração de terreno
@@ -22,19 +25,19 @@ src/
 ### Rodar todos os testes
 
 ```bash
-npm run test
+pnpm run test
 ```
 
 ### Modo watch (rerun em mudanças)
 
 ```bash
-npm run test -- --watch
+pnpm run test -- --watch
 ```
 
 ### Interface gráfica
 
 ```bash
-npm run test:ui
+pnpm run test:ui
 ```
 
 Abrirá um navegador em `http://localhost:51204` com interface gráfica de testes.
@@ -42,7 +45,7 @@ Abrirá um navegador em `http://localhost:51204` com interface gráfica de teste
 ### Cobertura de código
 
 ```bash
-npm run test:coverage
+pnpm run test:coverage
 ```
 
 Gera relatório detalhado de cobertura em `coverage/index.html`
@@ -172,15 +175,15 @@ it('should increase counter by 1', () => {
 
 ### Alvo de Cobertura
 
-- **Statements**: > 80%
-- **Branches**: > 75%
-- **Functions**: > 80%
-- **Lines**: > 80%
+- **Statements**: > 90%
+- **Branches**: > 90%
+- **Functions**: > 90%
+- **Lines**: > 90%
 
 ### Visualizar Cobertura
 
 ```bash
-npm run test:coverage
+pnpm run test:coverage
 # Abra coverage/index.html no navegador
 ```
 
@@ -205,7 +208,7 @@ Adicione no `.vscode/launch.json`:
   "type": "node",
   "request": "launch",
   "name": "Vitest Debug",
-  "runtimeExecutable": "npm",
+  "runtimeExecutable": "pnpm",
   "runtimeArgs": ["run", "test", "--", "--inspect-brk", "--no-file-parallelism"],
   "console": "integratedTerminal",
   "internalConsoleOptions": "neverOpen"

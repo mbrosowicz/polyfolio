@@ -68,3 +68,31 @@ export interface PS1DebugStats {
     max: [string, string, string];
   };
 }
+
+export interface PortfolioProjectNode {
+  id: string;
+  title: string;
+  summary: string;
+  position: [number, number, number];
+  icon: 'disc' | 'memory-card' | 'controller' | 'tower';
+  accentColor?: string;
+  stack: string[];
+}
+
+export interface RetroProjectMarkerProps {
+  project: PortfolioProjectNode;
+  isSelected?: boolean;
+  onSelect?: (project: PortfolioProjectNode) => void;
+}
+
+export interface RetroPlayerIconProps {
+  position?: [number, number, number];
+  color?: string;
+  bobSpeed?: number;
+}
+
+export interface InteractivePortfolioMapProps {
+  projects?: PortfolioProjectNode[];
+  selectedProjectId?: string;
+  onSelectProject?: (project: PortfolioProjectNode) => void;
+}

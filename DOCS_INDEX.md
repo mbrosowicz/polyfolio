@@ -13,9 +13,9 @@ Se é sua primeira vez aqui:
 Se já tem experiência:
 
 ```bash
-npm install
-npm run prepare
-npm run dev
+pnpm install
+pnpm run prepare
+pnpm run dev
 ```
 
 ## 📖 Documentação Principal
@@ -37,6 +37,7 @@ npm run dev
 | [PS1_SHADERS_README.md](PS1_SHADERS_README.md) | Shaders, customizações |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md)       | Problemas comuns       |
 | [QUICK_START.md](QUICK_START.md) (Shaders)     | Exemplos de uso        |
+| [README.md](README.md) (Project Map)           | Estrutura do mapa 3D   |
 
 ### Migração PS1
 
@@ -80,22 +81,22 @@ npm run dev
 
 ```bash
 # Desenvolvimento
-npm run dev              # 🎯 Comece por aqui!
+pnpm run dev              # 🎯 Comece por aqui!
 
 # Qualidade
-npm run type-check       # Análise de tipos
-npm run lint             # Linting
-npm run format           # Formatação
-npm run lint:fix         # Fix automático
+pnpm run type-check       # Análise de tipos
+pnpm run lint             # Linting
+pnpm run format           # Formatação
+pnpm run lint:fix         # Fix automático
 
 # Testes
-npm run test             # Rodar testes
-npm run test:ui          # UI dos testes
-npm run test:coverage    # Cobertura
+pnpm run test             # Rodar testes
+pnpm run test:ui          # UI dos testes
+pnpm run test:coverage    # Cobertura
 
 # Build
-npm run build            # Produção
-npm run preview          # Preview build
+pnpm run build            # Produção
+pnpm run preview          # Preview build
 ```
 
 ## 🛠️ Stack Técnico
@@ -149,12 +150,12 @@ Polyfolio
 
 ## ✅ Checklist Inicial
 
-- [ ] Executei `npm install`
-- [ ] Executei `npm run prepare` (Husky)
-- [ ] Rodei `npm run dev`
+- [ ] Executei `pnpm install`
+- [ ] Executei `pnpm run prepare` (Husky)
+- [ ] Rodei `pnpm run dev`
 - [ ] Abri http://localhost:5173
 - [ ] Implementei meu primeiro componente
-- [ ] Rodei `npm run test`
+- [ ] Rodei `pnpm run test`
 - [ ] Li [COMPONENT_TEMPLATE.md](COMPONENT_TEMPLATE.md)
 
 ## 🎓 Recursos Externos
@@ -167,7 +168,7 @@ Polyfolio
 
 ## 🚀 Próximos Passos
 
-1. Rode `npm run dev`
+1. Rode `pnpm run dev`
 2. Abra http://localhost:5173
 3. Customize PS1Demo.tsx
 4. Leia [COMPONENT_TEMPLATE.md](COMPONENT_TEMPLATE.md)
